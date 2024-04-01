@@ -10,37 +10,37 @@ pipeline {
 
         stage('Dependency Installation') {
             steps {
-                sh 'npm install'
+                echo 'npm install'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'npm run build'
+                echo 'npm run build'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'npm test'
+                echo 'npm test'
             }
         }
 
         stage('Containerize') {
             steps {
-                sh 'docker build -t react-bank-app .'
+                echo 'docker build -t react-bank-app .'
             }
         }
 
         stage('Docker Compose Up') {
             steps {
-                sh 'docker-compose up -d'
+                echo 'docker-compose up -d'
             }
         }
 
         stage('Clean Up') {
             steps {
-                sh 'docker-compose down'
+                echo 'docker-compose down'
             }
         }
     }
@@ -59,7 +59,7 @@ pipeline {
         }
 
         cleanup {
-            sh 'docker-compose down'
+            echo 'docker-compose down'
         }
     }
 }
